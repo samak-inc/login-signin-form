@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>SAMAK | Login and Signin Form</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+		/>
+		<link rel="stylesheet" href="./style.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css"
+		/>
+	</head>
+	<body translate="no">
+		<section class="login login--half-round login--rtl">
+			<section class="login__content">
+				<section class="login__header">
+					<h1 class="login__title">Login</h1>
+					<span class="login__desc"
+						>If you have any account, Log in</span
+					>
+				</section>
+				<form class="login__form">
+					<!-- [START INPUTS] -->
+					<fieldset class="login__fields login__fields--input">
+						<legend class="visible-hidden">
+							<!-- this make accessability of auth with manual login -->
+						</legend>
+
+						<!-- [START USERNAME] -->
+						<label class="login__field login__field--username">
+							<input
+								class="login__input"
+								placeholder="username"
+								type="text"
+								name=""
+								id=""
+							/>
+						</label>
+						<!-- [END USERNAME] -->
+
+						<!-- [START PASSWORD] -->
+						<label class="login__field login__field--password">
+							<input
+								class="login__input"
+								type="password"
+								placeholder="password"
+								name=""
+								id=""
+							/>
+							<!-- [START TOGGLE] -->
+							<button type="button" class="login__trailing">
+								<i class="fa fa-eye"></i>
+							</button>
+							<!-- [END TOGGLE] -->
+						</label>
+						<!-- [END PASSWORD] -->
+
+						<button type="submit" class="login__submit">
+							<strong>Login</strong>
+						</button>
+					</fieldset>
+					<!-- [END INPUTS] -->
+
+					<!-- [START SEPRATOR] -->
+					<section class="login__seprator">
+						<span
+							class="login__seprate loign__seprate--left"
+						></span>
+						<span class="login__seprate_text">OR</span>
+						<span
+							class="login__seprate loign__seprate--right"
+						></span>
+					</section>
+					<!-- [END SEPRATOR] -->
+
+					<!-- [START FORGOT] -->
+					<fieldset class="login__fields login__fields--forgot">
+						<legend class="visible-hidden">
+							<!-- this make accessability of auth with forgot password -->
+						</legend>
+
+						<button type="button" class="login__forgot">
+							Are you forgot your password?
+						</button>
+					</fieldset>
+					<!-- [END FORGOT] -->
+				</form>
+			</section>
+
+			<figure class="login__poster">
+				<img
+					src="https://cdn3d.iconscout.com/3d/premium/thumb/man-holding-sign-up-form-2937684-2426382.png"
+					alt="login-image"
+					class="login__image"
+				/>
+				<figcaption class="login__none">
+					<!-- NOTHING -->
+				</figcaption>
+			</figure>
+		</section>
+
+		<script src="https://cdn.jsdelivr.net/gh/miko-github/miko-github@v1.1.0/codepen.js"></script>
+		<script type="text/javascript" src="./main.js"></script>
+	</body>
+</html>
