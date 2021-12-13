@@ -2,7 +2,6 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>SAMAK | Login and Signin Form</title>
 		<link
@@ -16,22 +15,28 @@
 		/>
 	</head>
 	<body translate="no">
-		<section class="login login--half-round login--rtl">
-			<section class="login__content">
+		<!-- NOTE : for useing nice seo, document file should have the HEADING-1 element -->
+		<!-- <h1 class="visible-hidden">SAMAK | Login and Signin Form</h1> -->
+
+		<section class="samak samak--half-round samak--rtl">
+			<input
+				type="checkbox"
+				class="samak__checkbox"
+				name="samak-side-controller"
+				id="samak-side-controller"
+				checked
+			/>
+			<!-- MARK : [LOGIN-SIDE] -->
+			<section class="samak__side samak__side--login">
 				<section class="login__header">
-					<h1 class="login__title">Login</h1>
-					<span class="login__desc">
-						If you have any account, Log in
-					</span>
+					<h2 class="login__title">Login</h2>
+					<span class="login__desc"> If you have any account, Log in </span>
 				</section>
 				<form class="login__form">
-					<!-- [START INPUTS] -->
 					<fieldset class="login__fields login__fields--input">
 						<legend class="visible-hidden">
 							<!-- this make accessability of auth with manual login -->
 						</legend>
-
-						<!-- [START USERNAME] -->
 						<label class="login__field login__field--username">
 							<input
 								class="login__input"
@@ -41,9 +46,6 @@
 								id=""
 							/>
 						</label>
-						<!-- [END USERNAME] -->
-
-						<!-- [START PASSWORD] -->
 						<label class="login__field login__field--password">
 							<input
 								class="login__input"
@@ -52,53 +54,108 @@
 								name=""
 								id=""
 							/>
-							<!-- [START TOGGLE] -->
 							<button type="button" class="login__trailing">
 								<i class="fa fa-eye"></i>
 							</button>
-							<!-- [END TOGGLE] -->
 						</label>
-						<!-- [END PASSWORD] -->
-
-						<button type="submit" class="login__submit">
+						<button type="submit" class="login__btn login__btn--login">
 							<strong>Login</strong>
 						</button>
 					</fieldset>
-					<!-- [END INPUTS] -->
 
-					<!-- [START SEPRATOR] -->
 					<section class="login__seprator">
-						<span
-							class="login__seprate loign__seprate--left"
-						></span>
+						<span class="login__seprate login__seprate--left"></span>
 						<span class="login__seprate_text">OR</span>
-						<span
-							class="login__seprate loign__seprate--right"
-						></span>
+						<span class="login__seprate login__seprate--right"></span>
 					</section>
-					<!-- [END SEPRATOR] -->
 
-					<!-- [START FORGOT] -->
-					<fieldset class="login__fields login__fields--forgot">
+					<fieldset class="login__fields login__fields--more">
 						<legend class="visible-hidden">
 							<!-- this make accessability of auth with forgot password -->
 						</legend>
-
-						<button type="button" class="login__forgot">
-							Are you forgot your password?
+						<button type="button" class="login__btn login__btn--forgot">
+							Forgot Password
 						</button>
+
+						<label
+							for="samak-side-controller"
+							class="login__btn login__btn--register"
+							role="button"
+						>
+							Create Accounts
+						</label>
 					</fieldset>
-					<!-- [END FORGOT] -->
 				</form>
 			</section>
 
-			<figure class="login__poster">
+			<!-- MARK : [SIGNIN-SIDE] -->
+			<section class="samak__side samak__side--signin">
+				<header class="signin__header">
+					<h2 class="signin__title">Sign-In</h2>
+					<span class="signin__desc">
+						If you have not any account, Sign in
+					</span>
+				</header>
+				<form class="signin__form">
+					<fieldset class="signin__fields signin__fields--input">
+						<legend class="visible-hidden">
+							<!-- this make accessability of auth with manual login -->
+						</legend>
+						<label class="signin__field signin__field--username">
+							<input
+								class="signin__input"
+								placeholder="username"
+								type="text"
+								name=""
+								id=""
+							/>
+						</label>
+
+						<label class="signin__field signin__field--password">
+							<input
+								class="signin__input"
+								type="password"
+								placeholder="password"
+								name=""
+								id=""
+							/>
+							<button type="button" class="signin__trailing">
+								<i class="fa fa-eye"></i>
+							</button>
+						</label>
+						<button type="submit" class="signin__btn signin__btn--signin">
+							<strong>Register</strong>
+						</button>
+					</fieldset>
+
+					<section class="signin__seprator">
+						<span class="signin__seprate signin__seprate--left"></span>
+						<span class="signin__seprate_text">OR</span>
+						<span class="signin__seprate signin__seprate--right"></span>
+					</section>
+
+					<fieldset class="signin__fields signin__fields--more">
+						<legend class="visible-hidden">
+							<!-- this make accessability of auth with forgot password -->
+						</legend>
+						<label
+							for="samak-side-controller"
+							class="signin__btn signin__btn--exist"
+							role="button"
+						>
+							Are you have any account
+						</label>
+					</fieldset>
+				</form>
+			</section>
+
+			<figure class="samak__cover">
 				<img
-					src="https://cdn3d.iconscout.com/3d/premium/thumb/man-holding-sign-up-form-2937684-2426382.png"
+					src="https://i.pinimg.com/564x/c3/34/e3/c334e3014be8b52e0845b57a304a85f9.jpg"
 					alt="login-image"
-					class="login__image"
+					class="samak__image"
 				/>
-				<figcaption class="login__none">
+				<figcaption class="samak__none">
 					<!-- NOTHING -->
 				</figcaption>
 			</figure>
