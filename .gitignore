@@ -3,3 +3,4 @@ style.css
 .vscode/
 .prettierignore
 components.html
+.prettierrc
