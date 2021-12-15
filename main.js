@@ -43,6 +43,7 @@
 			},
 		},
 	};
+	const $language = query(`.language`);
 	const $checkbox = query(`#samak-side-controller`);
 	const $cover = query(`.samak__cover`).firstElementChild;
 	const field_password = {
@@ -66,7 +67,10 @@
 			: // show sign-in cover
 			  `https://i.pinimg.com/564x/6b/ee/21/6bee21249cd5ef1f48623c4c14630267.jpg`;
 	});
-	listener($cover, "click", () => {
+	listener($language, "click", () => {
+		let $body = document.body;
+		let $lang_selected = query(`input[name="lang-select"]:checked`).value;
+		$body.dataset.language = $lang_selected;
 		const elements = {
 			login: {
 				title: query(`.login__title`),
@@ -87,9 +91,7 @@
 				options: [query(`.signin__btn--exist`)],
 			},
 		};
-		document.body.dataset.language =
-			document.body.dataset.language === `english` ? `persian` : `english`;
-		language(elements, languages[document.body.dataset.language]);
+		language(elements, languages[$lang_selected]);
 	});
 })();
 
