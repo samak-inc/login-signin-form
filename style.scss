@@ -20,6 +20,8 @@
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lalezar&display=swap"); // NOTE : lalezar font
+@import url("https://cdn.jsdelivr.net/npm/yekan-font@1.0.0/css/yekan-font.min.css"); // NOTE : yekan font
 
 $c-primary: #1a2554;
 $c-secondary: #a5b3d4;
@@ -268,12 +270,11 @@ body {
 
 /* --- RTL --- */
 body[data-language="persian"] {
-	@import url("https://fonts.googleapis.com/css2?family=Lalezar&display=swap");
 	&,
 	button,
 	input {
 		text-align: right;
-		font-family: "Lalezar", cursive !important;
+		font-family: "Yekan", "Lalezar", cursive !important;
 		letter-spacing: 0.3px;
 	}
 	h1,
@@ -286,7 +287,9 @@ body[data-language="persian"] {
 	.login,
 	.signin {
 		&__input {
-			letter-spacing: 1.5px;
+			word-spacing: 5px;
+			// letter-spacing: 1.5px; // NOTE : font-face: lalezar
+			letter-spacing: 0.3px; // NOTE : font-face: yekan
 		}
 		&__field--password &__input {
 			padding-left: 40px;
@@ -297,9 +300,43 @@ body[data-language="persian"] {
 		}
 	}
 	.signin__desc {
-		word-spacing: 1.5px;
+		// word-spacing: 1.5px; // NOTE : font-face: lalezar
+		word-spacing: 2.2px; // NOTE : font-face: yekan
+		font-size: 0.9rem;
 	}
 	.login__desc {
-		word-spacing: 4.5px;
+		// word-spacing: 4.5px; // NOTE : font-face: lalezar
+		word-spacing: 0; // NOTE : font-face: yekan
+	}
+}
+
+.language {
+	@include fixed(20px, 40px);
+	@include --fcenter;
+	@include size(260px, 45px);
+	@include --radius;
+	@include --clear-space;
+	text-align: left;
+	box-shadow: 0 0 0.6rem rgba($c-secondary, 50%);
+	overflow: hidden;
+
+	&__item {
+		@include --fcenter;
+		@include align(space-around);
+		@include --clear-space;
+		@include --clear-btn;
+		@include size(50%, 100%);
+		padding: 6px 10px;
+		color: $c-primary;
+	}
+
+	input[type="radio"] {
+		display: none;
+	}
+
+	input[type="radio"]:checked + label {
+		color: $c-white;
+		background-color: $c-primary;
+		font-size: bold;
 	}
 }
