@@ -58,7 +58,7 @@ body {
 		@include --clear-space;
 		@include size(50%, 100%);
 		overflow: hidden;
-		padding-top: 40px;
+		padding-top: 25px;
 		padding-bottom: 40px;
 		// padding: 0;
 
@@ -118,8 +118,9 @@ body {
 	&__seprator {
 		@include flex;
 		@include align(space-between, center, center);
-		margin: 32px 10px; // MARK : ALIGN-UX
+		// margin: 32px 10px; // MARK : ALIGN-UX
 		// margin: 32px 2px; // MARK : NONE-UX
+		margin: 32px 10px 17px; // MARK : BETTER-SPACE
 	}
 	&__seprate {
 		@include size(calc(50% - 15px), 2px);
@@ -264,3 +265,41 @@ body {
 @include _radius("signin", "full-round", 25);
 @include _radius("signin", "half-round", 16);
 @include _radius("signin", "semi-round", 9);
+
+/* --- RTL --- */
+body[data-language="persian"] {
+	@import url("https://fonts.googleapis.com/css2?family=Lalezar&display=swap");
+	&,
+	button,
+	input {
+		text-align: right;
+		font-family: "Lalezar", cursive !important;
+		letter-spacing: 0.3px;
+	}
+	h1,
+	h2 {
+		letter-spacing: 2.1px;
+	}
+	strong {
+		letter-spacing: 1.3px;
+	}
+	.login,
+	.signin {
+		&__input {
+			letter-spacing: 1.5px;
+		}
+		&__field--password &__input {
+			padding-left: 40px;
+			padding-right: 2ch;
+		}
+		&__trailing {
+			left: 3px;
+		}
+	}
+	.signin__desc {
+		word-spacing: 1.5px;
+	}
+	.login__desc {
+		word-spacing: 4.5px;
+	}
+}
