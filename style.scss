@@ -237,32 +237,6 @@ body {
 	}
 }
 
-/* MARK : media-queries (responsivities) */
-@media screen and (max-width: 715px) {
-	.samak {
-		width: 90%;
-		&__side {
-			@include size(100%, 100%);
-			&--login {
-				margin-top: -500px; // NOTE : full-height of wgt
-			}
-		}
-		&__cover {
-			display: none;
-		}
-
-		&__checkbox:checked ~ &__side--login {
-			margin-top: 500px; // NOTE : full-height of wgt
-		}
-		&__checkbox:not(:checked) ~ &__side--login {
-			opacity: 0;
-		}
-		&__checkbox:checked ~ &__side--signin {
-			opacity: 0;
-		}
-	}
-}
-
 /* MARK : CORNER RADIUS */
 @mixin _radius($target: null, $key: null, $offset: 0) {
 	@at-root .samak {
@@ -280,7 +254,7 @@ body {
 @include _radius("signin", "half-round", 16);
 @include _radius("signin", "semi-round", 9);
 
-/* --- RTL --- */
+/* --- LANGUAGES --- */
 body[data-language="persian"] {
 	&,
 	button,
@@ -322,6 +296,8 @@ body[data-language="persian"] {
 	}
 }
 
+/* --- LANGUAGE-BOX --- */
+
 .language {
 	@include fixed(20px, 40px);
 	@include --fcenter;
@@ -350,5 +326,31 @@ body[data-language="persian"] {
 		color: $c-white;
 		background-color: $c-primary;
 		font-size: bold;
+	}
+}
+
+/* --- RESPONSIVITY --- */
+@media screen and (max-width: 715px) {
+	.samak {
+		width: 90%;
+		&__side {
+			@include size(100%, 100%);
+			&--login {
+				margin-top: -500px; // NOTE : full-height of wgt
+			}
+		}
+		&__cover {
+			display: none;
+		}
+
+		&__checkbox:checked ~ &__side--login {
+			margin-top: 500px; // NOTE : full-height of wgt
+		}
+		&__checkbox:not(:checked) ~ &__side--login {
+			opacity: 0;
+		}
+		&__checkbox:checked ~ &__side--signin {
+			opacity: 0;
+		}
 	}
 }
