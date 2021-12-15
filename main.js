@@ -1,12 +1,12 @@
 "use strict";
 
 (function () {
-	const languages = {
+	const _languages = {
 		persian: {
 			login: {
 				title: `ورود`,
 				description: `اگر حساب کاربری دارید، از اینجا وارد شوید`,
-				username: `نام کاربری`,
+				username: `تلفن همراه`,
 				password: `گذرواژه`,
 				submit: `وارد شدن`,
 				spliter: `یا`,
@@ -15,7 +15,7 @@
 			signin: {
 				title: `نام نویسی`,
 				description: `همچنین شما میتوانید از اینجا نام‌نویسی کنید`,
-				username: `نام کاربری`,
+				username: `تلفن همراه`,
 				password: `گذرواژه`,
 				submit: `ایجاد کردن`,
 				spliter: `یا`,
@@ -26,7 +26,7 @@
 			login: {
 				title: `Login`,
 				description: ` If you have any account, Log in `,
-				username: `username`,
+				username: `phone number`,
 				password: `password`,
 				submit: `Login`,
 				spliter: `OR`,
@@ -35,12 +35,32 @@
 			signin: {
 				title: `Sign-In`,
 				description: `If you have not any account, Sign in`,
-				username: `username`,
+				username: `phone number`,
 				password: `password`,
 				submit: `Register`,
 				spliter: `OR`,
 				options: [`Are you have any account`],
 			},
+		},
+	};
+	const _elements = {
+		login: {
+			title: query(`.login__title`),
+			description: query(`.login__desc`),
+			username: query(`.login__field--username > .login__input`),
+			password: query(`.login__field--password > .login__input`),
+			submit: query(`.login__btn--login > strong`),
+			spliter: query(`.login__seprate_text`),
+			options: [query(`.login__btn--forgot`), query(`.login__btn--register`)],
+		},
+		signin: {
+			title: query(`.signin__title`),
+			description: query(`.signin__desc`),
+			username: query(`.signin__field--username > .signin__input`),
+			password: query(`.signin__field--password > .signin__input`),
+			submit: query(`.signin__btn--signin > strong`),
+			spliter: query(`.signin__seprate_text`),
+			options: [query(`.signin__btn--exist`)],
 		},
 	};
 	const $language = query(`.language`);
@@ -53,45 +73,27 @@
 	const $login_trailing = field_password.login.lastElementChild;
 	const $signin_trailing = field_password.signin.lastElementChild;
 
-	listener($login_trailing, "click", () =>
-		_trailing_(field_password.login.lastElementChild)
-	);
-	listener($signin_trailing, "click", () =>
-		_trailing_(field_password.signin.lastElementChild)
-	);
-	listener($checkbox, "change", () => {
-		let isUserExist = $checkbox.checked;
-		$cover.src = isUserExist
-			? // show login cover
-			  `https://i.pinimg.com/564x/c3/34/e3/c334e3014be8b52e0845b57a304a85f9.jpg`
-			: // show sign-in cover
-			  `https://i.pinimg.com/564x/6b/ee/21/6bee21249cd5ef1f48623c4c14630267.jpg`;
-	});
-	listener($language, "click", () => {
-		let $body = document.body;
-		let $lang_selected = query(`input[name="lang-select"]:checked`).value;
-		$body.dataset.language = $lang_selected;
-		const elements = {
-			login: {
-				title: query(`.login__title`),
-				description: query(`.login__desc`),
-				username: query(`.login__field--username > .login__input`),
-				password: query(`.login__field--password > .login__input`),
-				submit: query(`.login__btn--login > strong`),
-				spliter: query(`.login__seprate_text`),
-				options: [query(`.login__btn--forgot`), query(`.login__btn--register`)],
-			},
-			signin: {
-				title: query(`.signin__title`),
-				description: query(`.signin__desc`),
-				username: query(`.signin__field--username > .signin__input`),
-				password: query(`.signin__field--password > .signin__input`),
-				submit: query(`.signin__btn--signin > strong`),
-				spliter: query(`.signin__seprate_text`),
-				options: [query(`.signin__btn--exist`)],
-			},
-		};
-		language(elements, languages[$lang_selected]);
+	// NOTE : to set default language as 'persian'
+	// should first input[value="language-persian"] checking, then language change, then another trigger enabling
+	Promise.all([
+		query(`#language-persian`).setAttribute(`checked`, ``),
+		updateLanguage(_elements, _languages),
+	]).then(() => {
+		listener($login_trailing, "click", () =>
+			_trailing_(field_password.login.lastElementChild)
+		);
+		listener($signin_trailing, "click", () =>
+			_trailing_(field_password.signin.lastElementChild)
+		);
+		listener($checkbox, "change", () => {
+			let isUserExist = $checkbox.checked;
+			$cover.src = isUserExist
+				? // show login cover
+				  `https://i.pinimg.com/564x/c3/34/e3/c334e3014be8b52e0845b57a304a85f9.jpg`
+				: // show sign-in cover
+				  `https://i.pinimg.com/564x/6b/ee/21/6bee21249cd5ef1f48623c4c14630267.jpg`;
+		});
+		listener($language, "click", () => updateLanguage(_elements, _languages));
 	});
 })();
 
@@ -109,12 +111,11 @@ function _trailing_($target) {
 // MULTI-LANGUAGE //
 
 // NOTE : non-return just change dom
-function language({ login: $login, signin: $signin }, { login, signin }) {
-	change($login, login);
-	change($signin, signin);
+function changeLanguage({ login: $login, signin: $signin }, { login, signin }) {
+	updateContent($login, login);
+	updateContent($signin, signin);
 }
-
-function change(
+function updateContent(
 	{
 		title: $title,
 		description: $description,
@@ -126,19 +127,25 @@ function change(
 	},
 	{ title, description, username, password, submit, spliter, options }
 ) {
-	$text($title, title);
-	$text($description, description);
-	$holder($username, username);
-	$holder($password, password);
-	$text($submit, submit);
-	$text($spliter, spliter);
+	updateText($title, title);
+	updateText($description, description);
+	updatePlaceholder($username, username);
+	updatePlaceholder($password, password);
+	updateText($submit, submit);
+	updateText($spliter, spliter);
 	$options.forEach(($element, index) => {
-		$text($element, options[index]);
+		updateText($element, options[index]);
 	});
 }
-function $text($target, text) {
+function updateText($target, text) {
 	$target.innerHTML = text;
 }
-function $holder($target, text) {
+function updatePlaceholder($target, text) {
 	$target.setAttribute(`placeholder`, text);
+}
+function updateLanguage(elements, languages) {
+	let $body = document.body;
+	let $lang_selected = query(`input[name="lang-select"]:checked`).value;
+	$body.dataset.language = $lang_selected;
+	changeLanguage(elements, languages[$lang_selected]);
 }
