@@ -62,8 +62,8 @@ body {
 		overflow: hidden;
 		padding-top: 25px;
 		padding-bottom: 40px;
-		// padding: 0;
-
+		transition-duration: 0.7s;
+		// padding: 0
 		// left &--login,
 		// right &--signin
 	}
@@ -216,6 +216,12 @@ body {
 	&__checkbox:checked ~ &__cover {
 		right: 0;
 	}
+	&__checkbox:not(:checked) ~ &__side--login {
+		opacity: 0;
+	}
+	&__checkbox:checked ~ &__side--signin {
+		opacity: 0;
+	}
 }
 .login,
 .signin {
@@ -247,6 +253,12 @@ body {
 
 		&__checkbox:checked ~ &__side--login {
 			margin-top: 500px; // NOTE : full-height of wgt
+		}
+		&__checkbox:not(:checked) ~ &__side--login {
+			opacity: 0;
+		}
+		&__checkbox:checked ~ &__side--signin {
+			opacity: 0;
 		}
 	}
 }
