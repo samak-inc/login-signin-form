@@ -18,134 +18,241 @@
 		<!-- NOTE : for useing nice seo, document file should have the HEADING-1 element -->
 		<!-- <h1 class="visible-hidden">SAMAK | Login and Signin Form</h1> -->
 
-		<section class="samak samak--half-round samak--rtl">
+		<section class="samak samak--half-round samak--rtl transition">
 			<input
 				type="checkbox"
-				class="samak__checkbox"
-				name="samak-side-controller"
-				id="samak-side-controller"
+				class="samak__checkbox transition__ctrl"
+				name="transition-ctrl-1"
+				id="transition-ctrl-1"
 				checked
 			/>
 			<!-- MARK : [LOGIN-SIDE] -->
-			<section class="samak__side samak__side--login">
-				<section class="login__header">
-					<h2 class="login__title">Login</h2>
-					<span class="login__desc"> If you have any account, Log in </span>
-				</section>
-				<form class="login__form">
-					<fieldset class="login__fields login__fields--input">
-						<legend class="visible-hidden">
-							<!-- this make accessability of auth with manual login -->
-						</legend>
-						<label class="login__field login__field--username">
-							<input
-								class="login__input"
-								placeholder="username"
-								type="text"
-								name=""
-							/>
-						</label>
-						<label class="login__field login__field--password">
-							<input
-								class="login__input"
-								type="password"
-								placeholder="password"
-								name=""
-							/>
-							<button type="button" class="login__trailing">
-								<i class="fa fa-eye"></i>
-							</button>
-						</label>
-						<button type="submit" class="login__btn login__btn--login">
-							<strong>Login</strong>
-						</button>
-					</fieldset>
+			<section
+				class="
+					transition__box transition__box--number-1 transition__box--login
+					samak__side samak__side--login
+				"
+			>
+				<section class="transition__content">
+					<input
+						type="checkbox"
+						class="transition__ctrl"
+						name="transition-ctrl-2"
+						id="transition-ctrl-2"
+					/>
 
-					<section class="login__seprator">
-						<span class="login__seprate login__seprate--left"></span>
-						<span class="login__seprate_text">OR</span>
-						<span class="login__seprate login__seprate--right"></span>
+					<section
+						class="
+							transition__box transition__box--number-1 transition__box--form
+							login__view login__view--login
+						"
+					>
+						<section class="login__header">
+							<h2 class="login__title">Login</h2>
+							<span class="login__desc"> If you have any account, Log in </span>
+						</section>
+						<form class="login__form">
+							<fieldset class="login__fields login__fields--input">
+								<legend class="visible-hidden">
+									<!-- this make accessability of auth with manual login -->
+								</legend>
+								<label class="login__field login__field--username">
+									<input
+										class="login__input"
+										placeholder="username"
+										type="text"
+										name=""
+									/>
+								</label>
+								<label class="login__field login__field--password">
+									<input
+										class="login__input"
+										type="password"
+										placeholder="password"
+										name=""
+									/>
+									<button type="button" class="login__trailing">
+										<i class="fa fa-eye"></i>
+									</button>
+								</label>
+								<button type="submit" class="login__btn login__btn--login">
+									<strong>Login</strong>
+								</button>
+							</fieldset>
+
+							<section class="login__seprator">
+								<span class="login__seprate login__seprate--left"></span>
+								<span class="login__seprate_text">OR</span>
+								<span class="login__seprate login__seprate--right"></span>
+							</section>
+
+							<fieldset class="login__fields login__fields--more">
+								<legend class="visible-hidden">
+									<!-- this make accessability of auth with forgot password -->
+								</legend>
+								<label
+									for="transition-ctrl-2"
+									class="login__btn login__btn--forgot"
+									role="button"
+								>
+									Forgot Password
+								</label>
+
+								<label
+									for="transition-ctrl-1"
+									class="login__btn login__btn--register"
+									role="button"
+								>
+									Create Accounts
+								</label>
+							</fieldset>
+						</form>
 					</section>
-
-					<fieldset class="login__fields login__fields--more">
-						<legend class="visible-hidden">
-							<!-- this make accessability of auth with forgot password -->
-						</legend>
-						<button type="button" class="login__btn login__btn--forgot">
-							Forgot Password
-						</button>
-
-						<label
-							for="samak-side-controller"
-							class="login__btn login__btn--register"
-							role="button"
-						>
-							Create Accounts
-						</label>
-					</fieldset>
-				</form>
+					<section
+						class="
+							transition__box transition__box--number-2 transition__box--forgot
+							login__view login__view--forgot
+						"
+					>
+						<section class="login__header">
+							<h2 class="login__title">Recover Password</h2>
+							<span class="login__desc"> Enter your new password </span>
+						</section>
+						<form class="login__form">
+							<fieldset class="login__fields login__fields--input">
+								<legend class="visible-hidden">
+									<!-- this make accessability of auth with manual login -->
+								</legend>
+								<label class="login__field login__field--verify-forgot">
+									<input
+										maxlength="1"
+										class="login__input"
+										type="password"
+										placeholder="X"
+										name="verify-forgot"
+										onchange="(function(b){
+											b.nextElementSibling;
+										})(e)"
+									/>
+									<input
+										maxlength="1"
+										class="login__input"
+										type="password"
+										placeholder="X"
+										name="verify-forgot"
+									/>
+									<input
+										maxlength="1"
+										class="login__input"
+										type="password"
+										placeholder="X"
+										name="verify-forgot"
+									/>
+									<input
+										maxlength="1"
+										class="login__input"
+										type="password"
+										placeholder="X"
+										name="verify-forgot"
+									/>
+								</label>
+								<button type="submit" class="login__btn login__btn--login">
+									<strong>RECOVER PASSWORD</strong>
+								</button>
+							</fieldset>
+							<fieldset class="login__fields login__fields--more">
+								<legend class="visible-hidden">
+									<!-- this make accessability of auth with forgot password -->
+								</legend>
+								<label
+									for="transition-ctrl-2"
+									class="login__btn login__btn--forgot"
+									role="button"
+								>
+									I Remember my password.
+								</label>
+							</fieldset>
+						</form>
+					</section>
+				</section>
 			</section>
 
 			<!-- MARK : [SIGNIN-SIDE] -->
-			<section class="samak__side samak__side--signin">
-				<header class="signin__header">
-					<h2 class="signin__title">Sign-In</h2>
-					<span class="signin__desc">
-						If you have not any account, Sign in
-					</span>
-				</header>
-				<form class="signin__form">
-					<fieldset class="signin__fields signin__fields--input">
-						<legend class="visible-hidden">
-							<!-- this make accessability of auth with manual login -->
-						</legend>
-						<label class="signin__field signin__field--username">
-							<input
-								class="signin__input"
-								placeholder="username"
-								type="text"
-								name=""
-							/>
-						</label>
+			<section
+				class="
+					transition__box transition__box--number-2 transition__box--singin
+					samak__side samak__side--signin
+				"
+			>
+				<section class="transition__content">
+					<input
+						type="checkbox"
+						class="transition__ctrl"
+						name="transition-ctrl-3"
+						id="transition-ctrl-3"
+					/>
+					<section class="transition__box transition__box--number-1">
+						<header class="signin__header">
+							<h2 class="signin__title">Sign-In</h2>
+							<span class="signin__desc">
+								If you have not any account, Sign in
+							</span>
+						</header>
+						<form class="signin__form">
+							<fieldset class="signin__fields signin__fields--input">
+								<legend class="visible-hidden">
+									<!-- this make accessability of auth with manual login -->
+								</legend>
+								<label class="signin__field signin__field--username">
+									<input
+										class="signin__input"
+										placeholder="username"
+										type="text"
+										name=""
+									/>
+								</label>
 
-						<label class="signin__field signin__field--password">
-							<input
-								class="signin__input"
-								type="password"
-								placeholder="password"
-								name=""
-							/>
-							<button type="button" class="signin__trailing">
-								<i class="fa fa-eye"></i>
-							</button>
-						</label>
-						<button type="submit" class="signin__btn signin__btn--signin">
-							<strong>Register</strong>
-						</button>
-					</fieldset>
+								<label class="signin__field signin__field--password">
+									<input
+										class="signin__input"
+										type="password"
+										placeholder="password"
+										name=""
+									/>
+									<button type="button" class="signin__trailing">
+										<i class="fa fa-eye"></i>
+									</button>
+								</label>
+								<button type="submit" class="signin__btn signin__btn--signin">
+									<strong>Register</strong>
+								</button>
+							</fieldset>
 
-					<section class="signin__seprator">
-						<span class="signin__seprate signin__seprate--left"></span>
-						<span class="signin__seprate_text">OR</span>
-						<span class="signin__seprate signin__seprate--right"></span>
+							<section class="signin__seprator">
+								<span class="signin__seprate signin__seprate--left"></span>
+								<span class="signin__seprate_text">OR</span>
+								<span class="signin__seprate signin__seprate--right"></span>
+							</section>
+
+							<fieldset class="signin__fields signin__fields--more">
+								<legend class="visible-hidden">
+									<!-- this make accessability of auth with forgot password -->
+								</legend>
+								<label
+									for="transition-ctrl-1"
+									class="signin__btn signin__btn--exist"
+									role="button"
+								>
+									Are you have any account
+								</label>
+							</fieldset>
+						</form>
 					</section>
-
-					<fieldset class="signin__fields signin__fields--more">
-						<legend class="visible-hidden">
-							<!-- this make accessability of auth with forgot password -->
-						</legend>
-						<label
-							for="samak-side-controller"
-							class="signin__btn signin__btn--exist"
-							role="button"
-						>
-							Are you have any account
-						</label>
-					</fieldset>
-				</form>
+					<section class="transition__box transition__box--number-2"></section>
+				</section>
 			</section>
 
-			<figure class="samak__cover">
+			<figure class="samak__cover transition__cover">
 				<img
 					src="https://i.pinimg.com/564x/c3/34/e3/c334e3014be8b52e0845b57a304a85f9.jpg"
 					alt="login-image"
