@@ -1,0 +1,25 @@
+/* [MOBILE] max-width: 715px (width < 715px) */
+@media screen and (max-width: 715px) {
+	.samak {
+		width: 90%;
+		&__side {
+			@include size(100%, 100%);
+			&--login {
+				margin-top: -500px; // NOTE : full-height of wgt
+			}
+		}
+		&__cover {
+			display: none;
+		}
+
+		&__checkbox:checked ~ &__side--login {
+			margin-top: 500px; // NOTE : full-height of wgt
+		}
+		&__checkbox:not(:checked) ~ &__side--login {
+			opacity: 0;
+		}
+		&__checkbox:checked ~ &__side--signin {
+			opacity: 0;
+		}
+	}
+}

@@ -1,0 +1,16 @@
+/* MARK : CORNER RADIUS */
+@mixin _radius($target: null, $key: null, $offset: 0) {
+	@at-root .samak {
+		&--#{$key} .#{$target}__field,
+		&--#{$key} .#{$target}__input,
+		&--#{$key} .#{$target}__btn {
+			@include --radius($offset);
+		}
+	}
+}
+@include _radius("login", "full-round", 25);
+@include _radius("login", "half-round", 16);
+@include _radius("login", "semi-round", 9);
+@include _radius("signin", "full-round", 25);
+@include _radius("signin", "half-round", 16);
+@include _radius("signin", "semi-round", 9);

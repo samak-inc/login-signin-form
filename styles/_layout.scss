@@ -1,49 +1,3 @@
-@import "./node_modules/@yek/sass/dist/index.scss";
-@mixin --clear-input {
-	@include --clear-space;
-	@include size($tog: 100%);
-	letter-spacing: 1.7px;
-	border: none;
-	outline: none;
-	box-shadow: none;
-	stroke: none;
-}
-@mixin --clear-fieldset-form {
-	fieldset,
-	form,
-	figure {
-		@include --clear-space;
-	}
-	figcaption {
-		display: none;
-	}
-}
-
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lalezar&display=swap"); // NOTE : lalezar font
-@import url("https://cdn.jsdelivr.net/npm/yekan-font@1.0.0/css/yekan-font.min.css"); // NOTE : yekan font
-
-$c-primary: #1a2554;
-$c-secondary: #a5b3d4;
-$c-gray: #dce5f2;
-$c-white: #f2f5fb;
-// $c-secondary: #44517b;
-// $c-gray: #e3ebf8;
-
-body {
-	@include --fcenter;
-	background-color: $c-white;
-	color: $c-secondary;
-	font-family: "Roboto", "sans-serif" !important;
-}
-
-.visible-hidden {
-	visibility: hidden;
-}
-@include --clear-fieldset-form;
-
-// CODE //
-
 /* --- CONTENT --- */
 .samak {
 	@include --fcenter;
@@ -211,6 +165,7 @@ body {
 
 	&__cover {
 		right: 50%;
+		transition-duration: 0.3s;
 	}
 
 	&__checkbox:checked ~ &__cover {
@@ -237,120 +192,97 @@ body {
 	}
 }
 
-/* MARK : CORNER RADIUS */
-@mixin _radius($target: null, $key: null, $offset: 0) {
-	@at-root .samak {
-		&--#{$key} .#{$target}__field,
-		&--#{$key} .#{$target}__input,
-		&--#{$key} .#{$target}__btn {
-			@include --radius($offset);
+/* --- LOGIN-VIEW --- */
+.login {
+	@include flex(column);
+	&__view {
+		&--login {
+			@include flex;
 		}
 	}
 }
-@include _radius("login", "full-round", 25);
-@include _radius("login", "half-round", 16);
-@include _radius("login", "semi-round", 9);
-@include _radius("signin", "full-round", 25);
-@include _radius("signin", "half-round", 16);
-@include _radius("signin", "semi-round", 9);
 
-/* --- LANGUAGES --- */
-body[data-language="persian"] {
-	&,
-	button,
-	input {
-		text-align: right;
-		font-family: "Yekan", "Lalezar", cursive !important;
-		letter-spacing: 0.3px;
-	}
-	h1,
-	h2 {
-		letter-spacing: 2.1px;
-	}
-	strong {
-		letter-spacing: 1.3px;
-	}
-	.login,
-	.signin {
-		&__input {
-			word-spacing: 5px;
-			// letter-spacing: 1.5px; // NOTE : font-face: lalezar
-			letter-spacing: 0.3px; // NOTE : font-face: yekan
-		}
-		&__field--password &__input {
-			padding-left: 40px;
-			padding-right: 2ch;
-		}
-		&__trailing {
-			left: 3px;
-		}
-	}
-	.signin__desc {
-		// word-spacing: 1.5px; // NOTE : font-face: lalezar
-		word-spacing: 2.2px; // NOTE : font-face: yekan
-		font-size: 0.9rem;
-	}
-	.login__desc {
-		// word-spacing: 4.5px; // NOTE : font-face: lalezar
-		word-spacing: 0; // NOTE : font-face: yekan
-	}
+/*/
+*
+*
+*
+*/
+
+body {
+	@include center(f-row);
 }
 
-/* --- LANGUAGE-BOX --- */
-
-.language {
-	@include fixed(20px, 40px);
-	@include --fcenter;
-	@include size(260px, 45px);
-	@include --radius;
-	@include --clear-space;
-	text-align: left;
-	box-shadow: 0 0 0.6rem rgba($c-secondary, 50%);
-	overflow: hidden;
-
-	&__item {
-		@include --fcenter;
-		@include align(space-around);
-		@include --clear-space;
-		@include --clear-btn;
-		@include size(50%, 100%);
-		padding: 6px 10px;
-		color: $c-primary;
-	}
-
-	input[type="radio"] {
+.transition {
+	&__ctrl {
 		display: none;
 	}
 
-	input[type="radio"]:checked + label {
-		color: $c-white;
-		background-color: $c-primary;
-		font-size: bold;
+	// @include flex(row);
+	// @include align(space-between);
+	// @include relative;
+
+	&__box {
+		@include center(f-row);
+		@include size(50%);
+		// @include --radius;
+		// @include --overhide;
+		// padding: 9px;
+	}
+	&__content &__box {
+		@include size(100%);
+		// @include --overhide;
+	}
+
+	&__content {
+		// @include flex(column);
+		// @include aligns(flex-start);
+		// flex-wrap: nowrap;
+		// @include size(100%, 100%);
+		// @include --overhide;
+	}
+
+	&__cover {
+		// @include center(f-row);
+		// @include size(calc(50% - 9px), 100%);
+		// @include --radius;
+		// @include --overhide;
+		// padding: 9px;
+		// @include absolute($right: 0, $top: 0, $bottom: 0);
+		// width: 50%;
+	}
+
+	&__ctrl:checked ~ &__cover {
+		// right: 50%;
+	}
+
+	&__box-form {
+		padding-top: 250px;
+	}
+	&__box--forgot,
+	&__box--form {
+		margin-top: 50%;
+		// height: 100%;
+		width: 100%;
 	}
 }
 
-/* --- RESPONSIVITY --- */
-@media screen and (max-width: 715px) {
-	.samak {
-		width: 90%;
-		&__side {
-			@include size(100%, 100%);
-			&--login {
-				margin-top: -500px; // NOTE : full-height of wgt
-			}
-		}
-		&__cover {
-			display: none;
-		}
+.transition__box--login .transition__ctrl:checked ~ .transition__box--form {
+	margin-top: -200%;
+}
 
-		&__checkbox:checked ~ &__side--login {
-			margin-top: 500px; // NOTE : full-height of wgt
-		}
-		&__checkbox:not(:checked) ~ &__side--login {
-			opacity: 0;
-		}
-		&__checkbox:checked ~ &__side--signin {
-			opacity: 0;
-		}
+.login,
+.signin {
+	&__field--verify-forgot {
+		@include size;
+		@include flex(row);
+		@include align(space-around);
+		background-color: transparent;
+		@include --clear-input;
+	}
+	&__field--verify-forgot &__input {
+		text-align: center;
+		@include size(50px, 50px);
+		@include --radius(0);
+		background-color: $c-white;
 	}
 }

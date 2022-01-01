@@ -1,0 +1,73 @@
+/* --- LANGUAGES --- */
+body[data-language="persian"] {
+	&,
+	button,
+	input {
+		text-align: right;
+		font-family: "Yekan", "Lalezar", cursive !important;
+		letter-spacing: 0.3px;
+	}
+	h1,
+	h2 {
+		letter-spacing: 2.1px;
+	}
+	strong {
+		letter-spacing: 1.3px;
+	}
+	.login,
+	.signin {
+		&__input {
+			word-spacing: 5px;
+			// letter-spacing: 1.5px; // NOTE : font-face: lalezar
+			letter-spacing: 0.3px; // NOTE : font-face: yekan
+		}
+		&__field--password &__input {
+			padding-left: 40px;
+			padding-right: 2ch;
+		}
+		&__trailing {
+			left: 3px;
+		}
+	}
+	.signin__desc {
+		// word-spacing: 1.5px; // NOTE : font-face: lalezar
+		word-spacing: 2.2px; // NOTE : font-face: yekan
+		font-size: 0.9rem;
+	}
+	.login__desc {
+		// word-spacing: 4.5px; // NOTE : font-face: lalezar
+		word-spacing: 0; // NOTE : font-face: yekan
+	}
+}
+
+/* --- LANGUAGE-BOX --- */
+.language {
+	@include fixed(20px, 40px);
+	@include --fcenter;
+	@include size(260px, 45px);
+	@include --radius;
+	@include --clear-space;
+	text-align: left;
+	box-shadow: 0 0 0.6rem rgba($c-secondary, 50%);
+	overflow: hidden;
+
+	&__item {
+		@include --fcenter;
+		@include align(space-around);
+		@include --clear-space;
+		@include --clear-btn;
+		@include size(50%, 100%);
+		padding: 6px 10px;
+		color: $c-primary;
+	}
+
+	input[type="radio"] {
+		display: none;
+	}
+
+	input[type="radio"]:checked + label {
+		color: $c-white;
+		background-color: $c-primary;
+		font-size: bold;
+	}
+}

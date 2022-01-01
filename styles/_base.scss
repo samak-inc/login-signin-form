@@ -1,0 +1,73 @@
+@import "./../node_modules/@yek/sass/dist/index.scss";
+
+// FONT IMPORTS
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lalezar&display=swap"); // NOTE : lalezar font
+@import url("https://cdn.jsdelivr.net/npm/yekan-font@1.0.0/css/yekan-font.min.css"); // NOTE : yekan font
+
+// VARIABLES
+$c-primary: #1a2554;
+$c-secondary: #a5b3d4;
+$c-gray: #dce5f2;
+$c-white: #f2f5fb;
+// $c-secondary: #44517b;
+// $c-gray: #e3ebf8;
+
+// MIXINS
+@mixin --clear-input {
+	@include --clear-space;
+	@include size($tog: 100%);
+	letter-spacing: 1.7px;
+	border: none;
+	outline: none;
+	box-shadow: none;
+	stroke: none;
+}
+@mixin --clear-fieldset-form {
+	fieldset,
+	form,
+	figure {
+		@include --clear-space;
+	}
+	figcaption {
+		display: none;
+	}
+}
+
+@mixin center($type: f-row) {
+	@if $type is f-row {
+		// f-row = flex-row = flex-ver
+		@include flex(row);
+		@include aligns;
+	}
+	@if $type is f-col {
+		// f-col = flex-column = flex-hor
+		@include flex(column);
+		@include aligns;
+	}
+}
+@mixin variant($bg: null, $fg: null) {
+	@if $bg not null {
+		background: $bg;
+	}
+	@if $fg not null {
+		color: $fg;
+	}
+}
+@mixin --overhide {
+	overflow: hidden;
+}
+
+// NORMILIZE
+body {
+	@include --fcenter;
+	background-color: $c-white;
+	color: $c-secondary;
+	font-family: "Roboto", "sans-serif" !important;
+}
+
+.visible-hidden {
+	visibility: hidden;
+}
+@include --clear-fieldset-form;
